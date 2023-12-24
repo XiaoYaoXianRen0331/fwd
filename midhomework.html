@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <title>專題評分管理系統</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <style>
     body,
     html {
@@ -240,7 +241,7 @@
 
 <body>
   <div class="container-fluid">
-    <form id='login' class="sign-box enters" method="post">
+    <form id='login' class="sign-box enters" method="post" action="account.php">
       <div class="sign-avatar">
         <img
           src="https://upload.wikimedia.org/wikipedia/zh/thumb/d/da/Fu_Jen_Catholic_University_logo.svg/640px-Fu_Jen_Catholic_University_logo.svg.png"
@@ -257,15 +258,16 @@
       <div class="form-group">
         <input type="password" name="pass" class="form-control" placeholder="Password" />
       </div>
+      <input type="hidden" name="level" id="level" value="" />
       <div class="form-check form-check-inline">
         <p>
-          <a href="midhomeworkteacher_group.html" type="submit">教師</a>
+        <div id="teacher">教師</div>
         </p>
         <p>
-          <a href="student.html">學生</a>
+        <div id="student">學生</div>
         </p>
         <p>
-          <a href="admin.html">管理員</a>
+        <div id="admin">管理員</div>
         </p>
     </form>
   </div>
@@ -295,6 +297,20 @@
         $('#login').html('Welcome, redirecting...');
         return false;
       }
+    });
+    let form = document.getElementById('login');
+    let level = document.getElementById('level');
+    document.querySelector('#teacher').addEventListener('click', (e) => {
+      level.value = 'teacher';
+      form.submit();
+    });
+    document.querySelector('#student').addEventListener('click', (e) => {
+      level.value = 'student';
+      form.submit();
+    });
+    document.querySelector('#admin').addEventListener('click', (e) => {
+      level.value = 'admin';
+      form.submit();
     });
   </script>
 </body>
