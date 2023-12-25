@@ -253,7 +253,7 @@ a, a:hover{
     <div class="row">
         <div class="col-lg-12">
     <div class="table-responsive">
-      <button class="btn btn-primary"><a href="add_teammate.php">新增組員</a></button>
+      <button class="btn btn-primary"><a href="add_teammate.php?number=<?php echo $_GET['number']; ?>">新增組員</a></button>
       <table class="table table-hover">
         <script>
             function openUploadPopup() {
