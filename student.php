@@ -204,6 +204,11 @@
    }
 }
 
+a, a:hover{
+    text-decoration: none;
+    color: inherit;
+}
+
   </style>
 </head>
 
@@ -248,7 +253,7 @@
     <div class="row">
         <div class="col-lg-12">
     <div class="table-responsive">
-      <button class="btn btn-primary">新增組員</button>  
+      <button class="btn btn-primary"><a href="add_teammate.php">新增組員</a></button>
       <table class="table table-hover">
         <script>
             function openUploadPopup() {
@@ -328,7 +333,29 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+         <?php
+         // $link=mysqli_connect('localhost','root','12345678','test');
+         $link = mysqli_connect('localhost', 'xiaoyao', 'xiaoyao', 'fwd');
+         $sql = "select * from account where level = 'student' and `group` = {$_GET['number']}";
+         $result = mysqli_query($link, $sql);
+         while($row = $result->fetch_assoc()){ ?>
+            <tr>
+            <td><input type="text" name="test" disabled="disabled" id="input1" value="<?php echo $row['name']; ?>"></td>
+            <td><input type="text" name="test" disabled="disabled" id="input2" value="<?php echo $row['email']; ?>"></td>
+            <td><input type="text" name="test" disabled="disabled" id="input3" value="<?php echo $row['id']; ?>"></td>
+            <td><input type="text" name="test" disabled="disabled" id="input4" value="<?php echo $row['project']; ?>"></td>
+            <td><input type="text" name="test" disabled="disabled" value="90"></td>
+            <td><div id="upload-popup">
+                <div id="upload-popup-content">
+                    <input type="file" accept=".pdf" id="pdf-upload1" />
+                </div>
+            </div></td>
+            <td><input type="button" value='Edit' class="btn btn-primary" onclick="enableInputs()"></td>
+            <td><a href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
+          </tr>
+         <?php } ?>
+         
+          <!-- <tr>
             <td><input type="text" name="test" disabled="disabled" id="input1" value="John"></td>
             <td><input type="text" name="test" disabled="disabled" id="input2" value="john@example.com"></td>
             <td><input type="text" name="test" disabled="disabled" id="input3" value="150110011"></td>
@@ -359,7 +386,7 @@
             
             <td><input type="button" value='Edit' class="btn btn-primary" onclick="enableInputs1()"></td>
            <td><a href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
-         </tr>
+         </tr> -->
        </tbody>
       </table>
     </div>

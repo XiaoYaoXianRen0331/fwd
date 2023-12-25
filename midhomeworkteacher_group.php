@@ -272,7 +272,25 @@
                         </tr>
                      </thead>
                      <tbody>
+                        <?php
+                        // $link=mysqli_connect('localhost','root','12345678','test');
+                        $link = mysqli_connect('localhost', 'xiaoyao', 'xiaoyao', 'fwd');
+                        $sql = "select * from project";
+                        $result = mysqli_query($link, $sql);
+                        while($row = $result->fetch_assoc()){ ?>
                         <tr>
+                           <td><a href="midhomeworkteacher.php?number=<?php echo $row['number']; ?>"><button type="button"
+                                    class="btn btn-primary">查看</button></a></td>
+                           <td><?php echo $row['name']; ?></td>
+                           <td><?php echo $row['number']; ?></td>
+                           <td><?php echo $row['project']; ?></td>
+                           <td><input type="text" name="test" value="<?php echo $row['grade']; ?>"></td>
+                           <td><a href=""><button type="button" class="btn btn-primary">Edit</button></a></td>
+                           <td><a href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
+                        </tr>
+                        <?php } ?>
+                        
+                        <!-- <tr>
                            <td><a href="midhomeworkteacher.html"><button type="button"
                                     class="btn btn-primary">查看</button></a></td>
                            <td>第一組</td>
@@ -281,7 +299,7 @@
                            <td><input type="text" name="test" value="90"></td>
                            <td><a href=""><button type="button" class="btn btn-primary">Edit</button></a></td>
                            <td><a href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
-                        </tr>
+                        </tr> -->
                      </tbody>
                   </table>
                </div>

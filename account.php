@@ -23,13 +23,13 @@ if ($row = mysqli_fetch_assoc($result)) {
     echo 'Welcome, redirecting...';
     switch ($level) {
         case 'admin':
-            $href = 'admin.html';
+            $href = 'admin.php';
             break;
         case 'teacher':
-            $href = 'midhomeworkteacher_group.html';
+            $href = 'midhomeworkteacher_group.php';
             break;
         case 'student':
-            $href = 'student.html';
+            $href = 'student.php?number=' . $row['group'];
             break;
     }
 } else {

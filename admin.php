@@ -7,9 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script>
-
-  $("#menu-toggle").click(function(e) {
+  <script>$("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
  });
@@ -18,7 +16,7 @@
     $("#wrapper").toggleClass("toggled-2");
     $('#menu ul').hide();
  });
- 
+
  function initMenu() {
     $('#menu ul').hide();
     $('#menu ul').children('.current').parent().show();
@@ -45,7 +43,7 @@
     .navbar {
       border-radius:0;
     }
-     
+
 
 .nav-pills > li > a {
    border-radius: 0;
@@ -208,13 +206,19 @@
 </head>
 
 <body>
+   <?php
+// $link=mysqli_connect('localhost','root','12345678','test');
+$link = mysqli_connect('localhost', 'xiaoyao', 'xiaoyao', 'fwd');
+$sql = "select * from account";
+$result = mysqli_query($link, $sql);
+?>
     <nav class="navbar navbar-default no-margin">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header fixed-brand">
            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" id="menu-toggle">
   <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
   </button>
-           <a class="navbar-brand" href="#"><i class="fa fa-rocket fa-4"></i> 專題評分管理系統-教師</a>
+           <a class="navbar-brand" href="#"><i class="fa fa-rocket fa-4"></i> 專題評分管理系統-管理</a>
         </div>
         <!-- navbar-header-->
 
@@ -240,33 +244,42 @@
         </div>
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
-  
-  
+
+
 
   <br>
   <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
-    <div class="table-responsive"> 
+    <div class="table-responsive">
+      <button class="btn btn-primary">管理員新增資料</button>
       <table class="table table-hover">
         <thead>
           <tr>
             <th>Name</th>
             <th>Email</th>
-            <th>student ID</th>
-            <th>projuct name</th>
-            <th>grade</th>
+            <th>ID</th>
+            <th>identity</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+         <?php while ($row = $result->fetch_assoc()) {?>
+         <tr>
+            <td><?php echo $row['name']; ?></td>
+            <td><?php echo $row['email']; ?></td>
+            <td><?php echo $row['id']; ?></td>
+            <td><?php echo $row['level']; ?></td>
+            <td><a href=""><button type="button" class="btn btn-primary">Edit</button></a></td>
+            <td><a href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
+          </tr>
+         <?php }?>
+          <!-- <tr>
             <td>John</td>
             <td>john@example.com</td>
             <td>150110011</td>
-            <td>xxx專題報告</td>
-            <td><input type="text" name="test" value="90"></td>
+            <td>學生</td>
             <td><a href=""><button type="button" class="btn btn-primary">Edit</button></a></td>
             <td><a href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
           </tr>
@@ -276,11 +289,10 @@
            <td>coco</td>
            <td>coco@example.com</td>
            <td>410235</td>
-           <td>xxx專題報告</td>
-           <td><input type="text" name="test"  value="100"></td>
+           <td>教師</td>
            <td><a href=""><button type="button" class="btn btn-primary">Edit</button></a></td>
            <td><a href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
-         </tr>
+         </tr> -->
        </tbody>
       </table>
     </div>
