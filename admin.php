@@ -252,7 +252,7 @@ $result = mysqli_query($link, $sql);
     <div class="row">
         <div class="col-lg-12">
     <div class="table-responsive">
-      <button class="btn btn-primary">管理員新增資料</button>
+      <button class="btn btn-primary" onclick="addStudent()">管理員新增資料</button>
       <table class="table table-hover">
         <thead>
           <tr>
@@ -300,5 +300,9 @@ $result = mysqli_query($link, $sql);
     </div>
   </div>
 </body>
-
+<script>
+   function addStudent() {
+      window.location.href = 'add_account.html';
+   }
+</script>
 </html>

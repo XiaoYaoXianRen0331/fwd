@@ -30,6 +30,7 @@
             r = await r.text();
             console.log(r);
             result.innerHTML = r;
+            id.value = '';
         }
     }
 </script>
