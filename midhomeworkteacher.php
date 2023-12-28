@@ -267,14 +267,14 @@
             $sql = "select * from account where level = 'student' and `group` = {$_GET['number']}";
             $result = mysqli_query($link, $sql);
             while($row = $result->fetch_assoc()){ ?>
-            <tr>
+            <tr id="<?php echo $row['id']; ?>">
                <td><?php echo $row['name']; ?></td>
                <td><?php echo $row['email']; ?></td>
                <td><?php echo $row['id']; ?></td>
                <td><?php echo $row['project']; ?></td>
                <td><input type="text" name="test" value="<?php echo $row['grade']; ?>"></td>
-               <td><a href=""><button type="button" class="btn btn-primary">Edit</button></a></td>
-               <td><a href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
+               <td><button type="button" class="btn btn-primary edit">Edit</button></td>
+               <td><button type="button" class="btn btn-danger delete">Delete</button></td>
             </tr>
             <?php } ?>
           <!-- <tr>
@@ -304,5 +304,40 @@
     </div>
   </div>
 </body>
+<script>
+   let edits = document.querySelectorAll('.edit');
+   let deletes = document.querySelectorAll('.delete');
 
+   edits.forEach(function(edit){
+      edit.addEventListener('click', function(e){
+         let id = edit.closest('tr').id;
+         let score = edit.closest('tr').querySelector('input').value;
+         fetch('edit_student_score.php?id=' + id + '&score=' + score)
+            .then((response) => {
+               return response.text();
+            })
+            .then((text) => {
+               alert(text);
+            })
+      });
+   });
+
+   deletes.forEach(function(del){
+      del.addEventListener('click', function(e){
+         let id = del.closest('tr').id;
+         console.log(id);
+         fetch('delete_student.php?id=' + id)
+            .then((response) => {
+               return response.text();
+            })
+            .then((text) => {
+               alert(text);
+               if(text == '刪除成功'){
+                  tr = del.closest('tr');
+                  tr.parentNode.removeChild(tr);
+               }
+            })
+      });
+   });
+</script>
 </html>
