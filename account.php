@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?php
+
+<?php
 session_start();
 $id = $_POST['login'];
 $password = $_POST['pass'];
@@ -14,33 +7,30 @@ $level = $_POST['level'];
 
 // $link=mysqli_connect('localhost','root', '','test');
 $link = mysqli_connect('localhost', 'xiaoyao', 'xiaoyao', 'fwd');
-$sql = "select distinct * from account where id='$id' and password='$password' and level='$level'";
+$sql = "SELECT * FROM account WHERE `id` = '{$id}' AND `password` = '{$password}' AND `level` = '{$level}'";
 $result = $link->query($sql);
 if ($row = mysqli_fetch_assoc($result)) {
     $_SESSION['id'] = $id;
     $_SESSION['name'] = $row['name'];
     $_SESSION['level'] = $row['level'];
-    echo 'Welcome, redirecting...';
-    switch ($level) {
-        case 'admin':
-            $href = 'admin.php';
-            break;
-        case 'teacher':
-            $href = 'midhomeworkteacher_group.php';
-            break;
-        case 'student':
-            $href = 'student.php?number=' . $row['group'];
-            break;
-    }
+    $response = 'Welcome, redirecting...';
+    $success = true;
+    $group = $row['group'];
 } else {
-    echo 'Login failed';
-    $href = 'midhomework.html';
+    $response = 'Login failed';
+    $success = false;
+    $group = 0;
 }
+
+$responseData = [
+    "message" => $response,
+    "success" => $success,
+    "group" => $group
+];
+
+$jsonResponse = json_encode($responseData);
+
+header('Content-Type: application/json');
+
+echo $jsonResponse;
 ?>
-</body>
-<script>
-    setTimeout(() => {
-        window.location.href = '<?php echo $href; ?>';
-    }, 1000);
-</script>
-</html>

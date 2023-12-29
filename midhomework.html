@@ -258,16 +258,15 @@
       <div class="form-group">
         <input type="password" name="pass" class="form-control" placeholder="Password" />
       </div>
-      <input type="hidden" name="level" id="level" value="" />
       <div class="form-check form-check-inline">
         <p>
-        <div id="teacher">教師</div>
+        <button type="button" id="teacher">教師</button>
         </p>
         <p>
-        <div id="student">學生</div>
+        <button type="button" id="student">學生</button>
         </p>
         <p>
-        <div id="admin">管理員</div>
+        <button type="button" id="admin">管理員</button>
         </p>
     </form>
   </div>
@@ -281,36 +280,72 @@
       //If you get submits without this input you may add the IP to a blacklist
       $(this).append('<input name=human value=1 type=hidden>');
     });
-    $('#login').on('submit', function () {
-      $(this).removeClass('enters');
-      if ($('#login input[name=human]').val() != 1) {
-        $('.alert').addClass('hidden');
-        $('.alert-warning').removeClass('hidden');
-        $('.bot').removeClass('shake'); setTimeout(function () { $('.bot').addClass('shake'); }, 400); return false;
-      }
-      else if (!$('#login input[name=login]').val() || !$('#login input[name=pass]').val()) {
-        $('.alert').addClass('hidden');
-        $('.alert-danger').removeClass('hidden');
-        $('#login').addClass('shake'); setTimeout(function () { $('#login').removeClass('shake'); }, 400); return false;
-      }
-      else { //Ajax goes here or remove this if you just want the form to submit
-        $('#login').html('Welcome, redirecting...');
-        return false;
-      }
-    });
-    let form = document.getElementById('login');
-    let level = document.getElementById('level');
+    // $('#login').on('submit', function () {
+    //   $(this).removeClass('enters');
+    //   if ($('#login input[name=human]').val() != 1) {
+    //     $('.alert').addClass('hidden');
+    //     $('.alert-warning').removeClass('hidden');
+    //     $('.bot').removeClass('shake'); setTimeout(function () { $('.bot').addClass('shake'); }, 400); return false;
+    //   }
+    //   else if (!$('#login input[name=login]').val() || !$('#login input[name=pass]').val()) {
+    //     $('.alert').addClass('hidden');
+    //     $('.alert-danger').removeClass('hidden');
+    //     $('#login').addClass('shake'); setTimeout(function () { $('#login').removeClass('shake'); }, 400); return false;
+    //   }
+    //   else { //Ajax goes here or remove this if you just want the form to submit
+    //     $('#login').html('Welcome, redirecting...');
+    //     return false;
+    //   }
+    // });
+    let login = document.getElementById('login');
+
     document.querySelector('#teacher').addEventListener('click', (e) => {
-      level.value = 'teacher';
-      form.submit();
+      let form = new FormData(login);
+      form.append('level', 'teacher');
+      let api = 'account.php';
+      let options = { method: 'POST', body: form};
+      fetch(api, options)
+        .then((response) => {
+          return response.json();
+        })
+        .then((json) => {
+          alert(json['message']);
+          if(json['success']) {
+            window.location.href = 'midhomeworkteacher_group.php';
+          }
+        })
     });
     document.querySelector('#student').addEventListener('click', (e) => {
-      level.value = 'student';
-      form.submit();
+      let form = new FormData(login);
+      form.append('level', 'student');
+      let api = 'account.php';
+      let options = { method: 'POST', body: form};
+      fetch(api, options)
+        .then((response) => {
+          return response.json();
+        })
+        .then((json) => {
+          alert(json['message']);
+          if(json['success']) {
+            window.location.href = 'student.php?number=' + json['group'];
+          }
+        })
     });
     document.querySelector('#admin').addEventListener('click', (e) => {
-      level.value = 'admin';
-      form.submit();
+      let form = new FormData(login);
+      form.append('level', 'admin');
+      let api = 'account.php';
+      let options = { method: 'POST', body: form};
+      fetch(api, options)
+        .then((response) => {
+          return response.json();
+        })
+        .then((json) => {
+          alert(json['message']);
+          if(json['success']) {
+            window.location.href = 'admin.php';
+          }
+        })
     });
   </script>
 </body>

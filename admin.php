@@ -209,7 +209,7 @@
    <?php
 // $link=mysqli_connect('localhost','root','12345678','test');
 $link = mysqli_connect('localhost', 'xiaoyao', 'xiaoyao', 'fwd');
-$sql = "select * from account";
+$sql = "select * from account ORDER BY level, id";
 $result = mysqli_query($link, $sql);
 ?>
     <nav class="navbar navbar-default no-margin">
@@ -266,13 +266,13 @@ $result = mysqli_query($link, $sql);
         </thead>
         <tbody>
          <?php while ($row = $result->fetch_assoc()) {?>
-         <tr>
+         <tr id="<?php echo $row['id']; ?>">
             <td><?php echo $row['name']; ?></td>
             <td><?php echo $row['email']; ?></td>
             <td><?php echo $row['id']; ?></td>
             <td><?php echo $row['level']; ?></td>
-            <td><a href=""><button type="button" class="btn btn-primary">Edit</button></a></td>
-            <td><a href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
+            <td><a href="edit_account.php?id=<?php echo $row['id']; ?>"><button type="button" class="btn btn-primary">Edit</button></a></td>
+            <td><button type="button" class="btn btn-danger delete">Delete</button></td>
           </tr>
          <?php }?>
           <!-- <tr>
@@ -304,5 +304,23 @@ $result = mysqli_query($link, $sql);
    function addStudent() {
       window.location.href = 'add_account.html';
    }
+
+   let deletes = document.querySelectorAll('.delete');
+   deletes.forEach((del) => {
+      del.addEventListener('click', (e) => {
+         let id = del.closest('tr').id;
+         fetch('delete_student.php?id=' + id)
+            .then((response) => {
+               return response.text();
+            })
+            .then((text) => {
+               alert(text);
+               if(text == '刪除成功'){
+                  tr = del.closest('tr');
+                  tr.parentNode.removeChild(tr);
+               }
+            });
+      });
+   });
 </script>
 </html>

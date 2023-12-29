@@ -326,7 +326,7 @@
       del.addEventListener('click', function(e){
          let id = del.closest('tr').id;
          console.log(id);
-         fetch('delete_student.php?id=' + id)
+         fetch('delete_student_group.php?id=' + id)
             .then((response) => {
                return response.text();
             })
