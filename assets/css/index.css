@@ -1,0 +1,48 @@
+.header {
+    height: 120px;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-items {
+    display: flex;
+    gap: 10px;
+}
+
+.item:hover {
+    font-size: 1.05rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+}
+
+#title {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+.new {
+    height: 60px;
+    border-bottom: 1px solid #dedede;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-size: 1.2rem;
+}
+
+.options {
+    display: flex;
+    gap: 10px;
+}
