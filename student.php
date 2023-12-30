@@ -339,7 +339,7 @@ a, a:hover{
          $sql = "select * from account where level = 'student' and `group` = {$_GET['number']}";
          $result = mysqli_query($link, $sql);
          while($row = $result->fetch_assoc()){ ?>
-            <tr>
+            <tr id="<?php echo $row['id']; ?>">
             <td><input type="text" name="test" disabled="disabled" id="input1" value="<?php echo $row['name']; ?>"></td>
             <td><input type="text" name="test" disabled="disabled" id="input2" value="<?php echo $row['email']; ?>"></td>
             <td><input type="text" name="test" disabled="disabled" id="input3" value="<?php echo $row['id']; ?>"></td>
@@ -350,8 +350,8 @@ a, a:hover{
                     <input type="file" accept=".pdf" id="pdf-upload1" />
                 </div>
             </div></td>
-            <td><input type="button" value='Edit' class="btn btn-primary" onclick="enableInputs()"></td>
-            <td><a href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
+            <td><input type="button" value='Edit' class="btn btn-primary edit" onclick="enableInputs()"></td>
+            <td><a href=""><button type="button" class="btn btn-danger delete">Delete</button></a></td>
           </tr>
          <?php } ?>
          
@@ -394,5 +394,48 @@ a, a:hover{
     </div>
   </div>
 </body>
+<script>
+   let edits = document.querySelectorAll('.edit');
+   let deletes = document.querySelectorAll('.delete');
 
+   edits.forEach((edit) => {
+      edit.addEventListener('click', (e) => {
+         let file = document.querySelector('#pdf-upload1');
+         let form = new FormData();
+         let id = edit.closest('tr').id;
+         form.append('file', file.files[0]);
+         form.append('id', id);
+         let api = 'upload_file.php';
+         let options = {
+            method: 'POST',
+            body: form
+         }
+         fetch(api, options)
+            .then((response) => {
+               return response.text();
+            })
+            .then((response) => {
+               alert(response);
+            })
+      }, false);
+   });
+
+   deletes.forEach((del) => {
+      del.addEventListener('click', (e) => {
+         let id = del.closest(tr).id;
+         fetch('delete_file.php', {
+            method: 'POST',
+            body: JSON.stringify({
+               id: id
+            })
+         })
+            .then((response) => {
+               return response.text();
+            });
+            .then((response) => {
+               alert(response);
+            });
+      }, false);
+   });
+</script>
 </html>

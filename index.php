@@ -18,22 +18,23 @@
  <body>
    <div class="RedListCap" align=right>
      
-     <?php
-     session_start();
-     if(isset($_SESSION['name'])){
-    if($_SESSION['name']<>"")
-    {
-      echo '<a href="insert.htm">[新增公告]</a>';
-      echo "您好，", $_SESSION['name'], "<a href=logout.php>登出</a>";
-     }
-     else {
-      echo "<a href=login.htm>登入</a>";
-     }
+    <?php
+    session_start();
+    if(!(isset($_SESSION['name']))){
+      $_SESSION['id']="";
+      $_SESSION['name']="";
+      $_SESSION['level']="";
     }
-     else
-     {
+    if($_SESSION['name'] != "")
+    {
+      if($_SESSION['level'] == "admin"){
+        echo '<a href="insert.htm">[新增公告]</a>';
+      }
+      echo "您好，", $_SESSION['name'], "<a href=logout.php>登出</a>";
+    }
+    else {
       echo "<a href=login.htm>登入</a>";
-     }
+    }
      ?>
    </div>
 
@@ -51,20 +52,17 @@
 	   $result = mysqli_query($link,$sql);
 	   while($row=mysqli_fetch_assoc($result))
 	   {
+      echo "<tr>
+              <td>", $row['title'], "</td>
+              <td>
+                <a href=news.php?newsid=", $row['newsid'], ">[查看]</a>";
       if($_SESSION['level']=="admin")
       {
-        echo "<tr>
-                  <td>", $row['title'], "</td>
-                  <td>
-                    <a href=update.php?newsid=", $row['newsid'], ">[修改]</a>&nbsp;&nbsp;
-                    <a href=delete.php?newsid=", $row['newsid'], ">[刪除]</a>
-                  </td>
-              </tr>";
+        echo "<a href=update.php?newsid={$row['newsid']}>[修改]</a>
+              <a href=delete.php?newsid={$row['newsid']}>[刪除]</a>";
       }
-      else
-      {
-        echo "<tr><td>", $row['title'], "</td><td>&nbsp;</td></tr>";
-      }
+      echo '</td>
+            </tr>';
 	   }
 	   mysqli_close($link);
 	 ?>
