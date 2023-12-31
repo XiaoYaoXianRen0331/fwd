@@ -247,6 +247,9 @@
                <a href="#"><span class="fa-stack fa-lg pull-left"><i
                         class="fa fa-server fa-stack-1x "></i></span>Contact</a>
             </li>
+            <li>
+                 <a href="index.php"><span class="fa-stack fa-lg pull-left"><i></i></span>To Front Page</a>
+              </li>
          </ul>
       </div>
       <!-- /#sidebar-wrapper -->
@@ -259,6 +262,7 @@
          <div class="row">
             <div class="col-lg-12">
                <div class="table-responsive">
+               <button class="btn btn-primary"><a href="add_group.html" style="text-decoration: none; color: #fff;">新增組別</a></button>
                   <table class="table table-hover">
                      <thead>
                         <tr>

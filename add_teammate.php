@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/add_teammate.css">
 </head>
 <body>
-    <div class="wrap">
-        <div class="tip">請輸入組員學號</div>
-        <input type="text" id="student_id">
-        <button onclick="submit()">確認</button>
-        <div class="result"></div>
-        <a href="student.php?number=<?php echo $_GET['number']; ?>">返回</a>
+    <div class="container">
+        <div class="wrap">
+            <div class="title">請輸入組員學號</div>
+            <div class="item">
+                <input type="text" id="student_id">
+            </div>
+            <div class="item">
+                <button onclick="submit()">確認</button>
+            </div>
+        </div>
     </div>
 </body>
 <script>
@@ -28,9 +34,12 @@
                 body: 'id=' + encodeURIComponent(id.value) + '&number=<?php echo $_GET['number']; ?>'};
             let r = await fetch(api, option);
             r = await r.text();
-            console.log(r);
-            result.innerHTML = r;
+            alert(r);
+            if(r == '新增成功'){
+                window.location.href = 'midhomeworkteacher.php?number=<?php echo $_GET['number']; ?>';
+            }
             id.value = '';
+            id.focus();
         }
     }
 </script>
