@@ -12,7 +12,7 @@
     <div class="block">
       <div class="message"><?php echo $_GET['message']; ?></div>
       <div class="home">
-        <a href="index.php">返回首頁</a>
+        <a href="index.php">點此返回首頁或按Enter離開</a>
       </div>
     </div>
   </div>

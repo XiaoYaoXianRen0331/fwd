@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/login.css">
 </head>
 <body>
-    <div align=center>
+    <div class="container">
         <form method="post" action="login.php">
-            <table calss="RedList" width="500">
+            <table calss="RedList">
             <caption class="RedListCap">登入畫面</caption>
                 <tr>
                     <td>帳號</td>
@@ -19,7 +21,7 @@
                     <td><input type="password" name="password" required></td>
                 </tr>
                 <tr>
-                    <td colspan=2 align=center><input type=submit></td>
+                    <td><button type="submit">登入</button></td>
                 </tr>
             </table>
         </form>
