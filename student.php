@@ -11,6 +11,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
    <?php 
+   session_start();
    if(!(isset($_GET['number'])) || $_GET['number'] == 0){ ?>
       <script>
          alert('您尚未加入組別，請聯繫老師');
@@ -252,6 +253,9 @@ a, a:hover{
               <li>
                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-server fa-stack-1x "></i></span>Contact</a>
               </li>
+              <li>
+                 <a href="index.php"><span class="fa-stack fa-lg pull-left"><i></i></span>To Front Page</a>
+              </li>
            </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -265,6 +269,7 @@ a, a:hover{
         <div class="col-lg-12">
     <div class="table-responsive">
       <button class="btn btn-primary"><a href="add_teammate.php?number=<?php echo $_GET['number']; ?>">新增組員</a></button>
+      <button class="btn btn-primary"><a href="edit_project_name.php?id=<?php echo $_SESSION['id']; ?>">修改專題名稱</a></button>
       <table class="table table-hover">
         <script>
             function openUploadPopup() {

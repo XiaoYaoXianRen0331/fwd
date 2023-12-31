@@ -22,11 +22,9 @@
 </body>
 <script>
     let id = document.getElementById('student_id');
-    let result = document.querySelector('.result');
     async function submit() {
         if(id.value == "") {
             id.focus();
-            result.innerHTML = "請輸入學號";
         } else {
             let api = 'add_teammate_back.php';
             let option = { method: 'POST', 
