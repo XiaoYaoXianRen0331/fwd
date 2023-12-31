@@ -1,6 +1,8 @@
 <?php
 try {
-    $folderPath = 'assets/userdata/' . strval($_POST['id']);
+
+    $postData = json_decode(file_get_contents("php://input"), true);
+    $folderPath = 'assets/userdata/' . strval($postData['id']);
     if(is_dir($folderPath)) {
         $files = scandir($folderPath);
         $files = array_diff($files, array('.', '..'));

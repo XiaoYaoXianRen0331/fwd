@@ -339,6 +339,7 @@ a, a:hover{
             <th>projuct name</th>
             <th>grade</th>
             <th>專題檔案</th>
+            <th>下載檔案</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -358,11 +359,12 @@ a, a:hover{
             <td><input type="text" name="test" disabled="disabled" value="90"></td>
             <td><div id="upload-popup">
                 <div id="upload-popup-content">
-                    <input type="file" accept=".pdf" id="pdf-upload1" />
+                    <input type="file" accept=".pdf" class="pdf-upload1" />
                 </div>
             </div></td>
+            <td><button type="button" class="btn btn-primary download">Download</button></td>
             <td><input type="button" value='Edit' class="btn btn-primary edit" onclick="enableInputs()"></td>
-            <td><a href=""><button type="button" class="btn btn-danger delete">Delete</button></a></td>
+            <td><button type="button" class="btn btn-danger delete">Delete</button></td>
           </tr>
          <?php } ?>
          
@@ -408,10 +410,11 @@ a, a:hover{
 <script>
    let edits = document.querySelectorAll('.edit');
    let deletes = document.querySelectorAll('.delete');
+   let downloads = document.querySelectorAll('.download');
 
    edits.forEach((edit) => {
       edit.addEventListener('click', (e) => {
-         let file = document.querySelector('#pdf-upload1');
+         let file = edit.closest('tr').querySelector('.pdf-upload1');
          let form = new FormData();
          let id = edit.closest('tr').id;
          form.append('file', file.files[0]);
@@ -433,20 +436,28 @@ a, a:hover{
 
    deletes.forEach((del) => {
       del.addEventListener('click', (e) => {
-         let id = del.closest(tr).id;
+         let id = del.closest('tr').id;
          fetch('delete_file.php', {
             method: 'POST',
             body: JSON.stringify({
-               id: id
+               'id': id
             })
          })
             .then((response) => {
                return response.text();
-            });
+            })
             .then((response) => {
+               console.log(response);
                alert(response);
-            });
+            })
       }, false);
+   });
+
+   downloads.forEach((download) => {
+      download.addEventListener('click', async (e) => {
+         let id = download.closest('tr').id;
+         window.location.href = 'read_file.php?id=' + id;
+      });
    });
 </script>
 </html>
