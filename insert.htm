@@ -4,31 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/insert.css">
 </head>
 <body>
-    <form method="post" action="insert.php">
-        <table class="RedList" width="500">
-            <tr>
-                <td>公告編號</td>
-                <td><input type="number" name="newsid" required></td>
-            </tr>
-            <tr>
-                <td>公告標題</td>
-                <td><input type="text" name="title" required></td>
-            </tr>
-            <tr>
-                <td>公告內容</td>
-                <!-- <td><input type=text name="content" required></td> -->
-                <td><textarea name="content" cols="30" rows="10" style="resize: none;" required></textarea></td>
-            </tr>
-            <tr>
-                <td>公告日期</td>
-                <td><input type="date" name="newsdate" required></td>
-            </tr>
-            <tr>
-                <td co;span=2><input type=submit></td>
-            </tr>
-        </table>
-    </form>
+    <div class="container">
+        <form method="post" action="insert.php">
+            <div class="title">新增公告</div>
+            <table class="RedList">
+                <tr>
+                    <td>公告編號</td>
+                    <td><input type="number" name="newsid" required></td>
+                </tr>
+                <tr>
+                    <td>公告標題</td>
+                    <td><input type="text" name="title" required></td>
+                </tr>
+                <tr>
+                    <td>公告內容</td>
+                    <!-- <td><input type=text name="content" required></td> -->
+                    <td><textarea name="content" cols="30" rows="10" style="resize: none;" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>公告日期</td>
+                    <td><input type="date" name="newsdate" required></td>
+                </tr>
+                <tr>
+                    <td><button type=submit>提交</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
 </body>
 </html>

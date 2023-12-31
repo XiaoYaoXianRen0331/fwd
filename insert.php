@@ -12,9 +12,12 @@
         $content=$_POST['content'];
         $newsdate=$_POST['newsdate'];
 
+        session_start();
+        $arthur=$_SESSION['id'];
+
         // $link=mysqli_connect('localhost','root','12345678','test');
         $link = mysqli_connect('localhost','xiaoyao','xiaoyao','fwd');
-        $sql="insert into news (newsid, title, content, newsdate) values ('$newsid', '$title', '$content', '$newsdate')";
+        $sql="insert into news (newsid, title, content, newsdate, arthur) values ('$newsid', '$title', '$content', '$newsdate', '$arthur')";
         if(mysqli_query($link,$sql)){
             header("Location:message.php?message=新增成功");//轉址
         }

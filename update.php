@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/update.css">
 </head>
 <body>
     <?php
@@ -29,9 +31,9 @@
             $newsdate=$row['newsdate'];
         }
     ?>
-    <div align=center>
+    <div class="container">
         <form method="post" action="updatedb.php">
-            <table class="RedList" width="500">
+            <table class="RedList">
             <caption class="RedListCap">修改公告</caption>
                 <tr>
                     <td>公告編號</td>
@@ -51,7 +53,7 @@
                     <td><input type=date name="newsdate" value="<?php echo $newsdate; ?>"required></td>
                 </tr>
                 <tr>
-                    <td co;span=2><input type=submit></td>
+                    <td co;span=2><button type=submit>提交</button></td>
                 </tr>
             </table>
         </form>

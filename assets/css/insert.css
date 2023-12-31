@@ -1,0 +1,51 @@
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+tr {
+    display: block;
+    margin-top: 20px;
+}
+
+tr td:first-child {
+    width: 120px;
+    border-bottom: 1px solid #FF6136;
+}
+
+input {
+    width: 300px;
+    height: 40px;
+    margin-left: 10px;
+    font-size: 24px;
+}
+
+textarea {
+    width: 300px;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+button {
+    width: 120px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0);
+    border: 0;
+    border-bottom: 3px solid #FF6136;
+    font-size: 16px;
+}
+
+button:hover {
+    border-bottom: 10px solid #FF6136;
+    cursor: pointer;
+    font-weight: bold;
+}
