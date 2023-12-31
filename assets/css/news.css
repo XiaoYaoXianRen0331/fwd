@@ -1,0 +1,48 @@
+.header {
+    height: 120px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-items {
+    display: flex;
+    gap: 10px;
+}
+
+.item:hover {
+    font-size: 1.05rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.sub {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #505050;
+    border-bottom: 1px solid #505050;
+}
+
+.content {
+    margin-top: 20px;
+    line-height: 25px;
+    letter-spacing: 1px;
+    padding: 10px;
+}

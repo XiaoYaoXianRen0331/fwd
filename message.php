@@ -4,31 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/message.css">
 </head>
 <body>
-  <table width="400" align=center border=1 bordercolor=#cccc99 cellspacing=0 cellpadding=0>
-  <tr>  
-    <td bgcolor=#cccc99>
-      指令
-    </td>
-  </tr>
-  <tr>
-  <td bgcolor=white height=1></td>
-  </tr>
-  <tr>
-    <td bgcolor=white align=center height=150>
-      <p align=center><font color=#FF0000><?php echo $_GET['message']; ?>!</font></p>
-    </td>
-  </tr>
-  <tr>
-  <td bgcolor=white height=1></td>
-  </tr>
-  <tr>
-    <td align=right bgcolor=#cccc99>
-      | <a href="index.php">回主畫面</a> | 
-    </td>
-  </tr>
-  </table>
+  <div class="container">
+    <div class="block">
+      <div class="message"><?php echo $_GET['message']; ?></div>
+      <div class="home">
+        <a href="index.php">返回首頁</a>
+      </div>
+    </div>
+  </div>
 </body>
+<script>
+  document.addEventListener('keydown', function(e) {
+    // console.log(e);
+    if (e.keyCode == 13) {
+      window.location.assign('index.php');
+    }
+  });
+</script>
 </html>
 

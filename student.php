@@ -1,3 +1,5 @@
+
+
 <html lang="en">
 
 <head>
@@ -7,6 +9,15 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+   <?php 
+   if(!(isset($_GET['number'])) || $_GET['number'] == 0){ ?>
+      <script>
+         alert('您尚未加入組別，請聯繫老師');
+         window.location.href = 'index.php';
+      </script>
+   <?php }
+   ?>
 
   <script  language="javascript">
   $("#menu-toggle").click(function(e) {

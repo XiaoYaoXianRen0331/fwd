@@ -240,6 +240,9 @@ $result = mysqli_query($link, $sql);
               <li>
                  <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-server fa-stack-1x "></i></span>Contact</a>
               </li>
+              <li>
+                 <a href="index.php"><span class="fa-stack fa-lg pull-left"><i></i></span>To Front Page</a>
+              </li>
            </ul>
         </div>
         <!-- /#sidebar-wrapper -->

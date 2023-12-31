@@ -1,14 +1,36 @@
 <?php
+    //  $link=mysqli_connect('localhost','root', '','test');
+    $link = mysqli_connect('localhost','xiaoyao','xiaoyao','fwd');
+
     session_start();
     if(!(isset($_SESSION['name']))){
       $_SESSION['id']="";
       $_SESSION['name']="";
       $_SESSION['level']="";
+
+      $href = "midhomework.html";
+    } else {
+        if($_SESSION['id'] != ""){
+            $sql = "SELECT * FROM account WHERE `id`='{$_SESSION['id']}'";
+            $result = mysqli_query($link,$sql);
+            $row = mysqli_fetch_assoc($result);
+            switch($_SESSION['level']){
+                case 'admin':
+                    $href = "admin.php"; break;
+                case 'student':
+                    $href = "student.php?number=" . $row['group']; break;
+                case 'teacher':
+                    $href = "midhomeworkteacher_group.php"; break;
+            }
+        } else {
+            $href = "midhomework.html";
+        }
     }
-    //  $link=mysqli_connect('localhost','root', '','test');
-    $link = mysqli_connect('localhost','xiaoyao','xiaoyao','fwd');
-    $sql = "select * from news";
+
+    $sql = "SELECT * from news ORDER BY newsdate DESC";
     $result = mysqli_query($link,$sql);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +55,7 @@
             <?php
             if($_SESSION['name'] != ''){
                 echo '<div class="">您好，' . $_SESSION['name'] . '</div>';
-                if($_SESSION['level'] == 'admin'){ ?>
+                if($_SESSION['level'] != 'student'){ ?>
                     <div class="item">
                         <a href="insert.htm">新增公告</a>
                     </div>
@@ -51,7 +73,7 @@
             <?php }
             ?>
             <div class="item">
-                <a href="midhomework.html">前往評分管理系統</a>
+                <a href="<?php echo $href; ?>">前往評分管理系統</a>
             </div>
         </div>
     </div>

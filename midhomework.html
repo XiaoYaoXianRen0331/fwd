@@ -236,6 +236,22 @@
       color: #fff;
       opacity: 1
     }
+
+    .button {
+      background-color: #dedede;
+      width: 60px;
+      height: 30px;
+      border-radius: 5px;
+      border: 0;
+      overflow: visible;
+      white-space: nowrap;
+    }
+
+    .button:hover {
+      background-color: #505050;
+      color: #fff;
+      font-size: 1.05rem;
+    }
   </style>
 </head>
 
@@ -260,13 +276,13 @@
       </div>
       <div class="form-check form-check-inline">
         <p>
-        <button type="button" id="teacher">教師</button>
+        <button type="button" id="teacher" class="button">教師</button>
         </p>
         <p>
-        <button type="button" id="student">學生</button>
+        <button type="button" id="student" class="button">學生</button>
         </p>
         <p>
-        <button type="button" id="admin">管理員</button>
+        <button type="button" id="admin" class="button">管理員</button>
         </p>
     </form>
   </div>
