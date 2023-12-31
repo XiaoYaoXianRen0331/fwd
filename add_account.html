@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/add_account.css">
 </head>
 <body>
-    <div class="wrap-items">
+    <div class="container">
         <form action="add_account_back.php" method="post" id="form">
+            <div class="title">新增人員</div>
             <div class="item">
                 <div class="tip">姓名</div>
                 <input type="text" name="name" required>
@@ -28,14 +31,17 @@
                     <option value="admin">管理員</option>
                 </select>
             </div>
-            <div id="submit" onclick="submit()" style="height: 20px; width: 20px;"></div>
-            <!-- <button></button> -->
+            <div class="item">
+                <button class="submit" type="button">新增</button>
+            </div>
         </form>
     </div>
 </body>
 <script>
     let form = document.getElementById("form");
-    async function submit() {
+    let submit = document.querySelector(".submit");
+    submit.addEventListener("click", async function(e) {
+        e.preventDefault();
         let formdata = new FormData(form);
         let api = 'add_account_back.php';
         let options = { method: 'POST', body: formdata};
@@ -45,6 +51,6 @@
         if(responsetext == '新增成功'){
             window.location.href = 'admin.php';
         }
-    }
+    });
 </script>
 </html>

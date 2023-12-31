@@ -23,7 +23,7 @@ if ($row = mysqli_fetch_assoc($result)) {
     $_SESSION['level'] = $row['level'];
     header("Location:message.php?message=登入成功");
 } else {
-    header("Location:message.php?message=查無此帳號與密碼");
+    header("Location:message.php?message=帳號或密碼錯誤");
 }
 ?>
 
