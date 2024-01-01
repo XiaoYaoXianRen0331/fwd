@@ -13,9 +13,11 @@ $row = mysqli_query($link, $sql)->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/add_account.css">
 </head>
 <body>
-    <div class="wrap-items">
+    <div class="container">
         <form action="edit_account_back.php" method="post" id="form">
             <div class="item">
                 <div class="tip">姓名</div>
@@ -41,14 +43,18 @@ $row = mysqli_query($link, $sql)->fetch_assoc();
                     <option value="admin" <?php echo ($row['level'] == 'admin') ? 'selected' : '' ?>>管理員</option>
                 </select>
             </div>
-            <div id="submit" onclick="submit()" style="height: 20px; width: 20px;"></div>
+            <div class="item">
+                <button class="submit" id="button">修改</button>
+            </div>
             <!-- <button></button> -->
         </form>
     </div>
 </body>
 <script>
     let form = document.getElementById("form");
-    async function submit() {
+    let button = document.getElementById("button");
+    button.addEventListener("click", async function(e) {
+        e.preventDefault();
         let formdata = new FormData(form);
         formdata.append('account_id', <?php echo $row['account_id']; ?>);
         let api = 'edit_account_back.php';
@@ -59,6 +65,6 @@ $row = mysqli_query($link, $sql)->fetch_assoc();
         if(responsetext == '編輯成功'){
             window.location.assign('admin.php');
         }
-    }
+    });
 </script>
 </html>
