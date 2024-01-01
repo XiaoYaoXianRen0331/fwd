@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/add_group.css">
+</head>
+<body>
+    <div class="container">
+        <form action="add_group_back.php" method="post" id="form">
+            <div class="title">新增組別</div>
+            <div class="item">
+                <div class="tip">組別名稱</div>
+                <input type="text" name="name" required>
+            </div>
+            <div class="item">
+                <div class="tip">編號</div>
+                <input type="number" name="number" required>
+            </div>
+            <div class="item">
+                <div class="tip">專案名稱</div>
+                <input type="text" name="project" required>
+            </div>
+            <div class="item">
+                <button class="submit" type="button">新增</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    let form = document.getElementById("form");
+    let submit = document.querySelector(".submit");
+    let go = true;
+    submit.addEventListener("click", async function(e) {
+        e.preventDefault();
+
+        let inputs = document.querySelectorAll("input");
+        inputs.forEach(function(input) {
+            if(go) {
+                if(input.value == "") {
+                    alert(input.name + '欄位未填寫');
+                    input.focus();
+                    go = false;
+                }
+            }
+        });
+
+        if(!go) { go = true; return; }
+
+        let formdata = new FormData(form);
+        let api = 'add_group_back.php';
+        let options = { method: 'POST', body: formdata};
+        let response = await fetch(api, options);
+        let responsetext = await response.text();
+        alert(responsetext);
+        console.log(responsetext);
+        if(responsetext == '新增成功'){
+            window.location.href = 'midhomeworkteacher_group.php';
+        }
+    });
+</script>
+</html>

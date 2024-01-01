@@ -1,0 +1,51 @@
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.item {
+    margin-top: 20px;
+}
+
+.tip {
+    width: 80px;
+    text-align: center;
+    margin-bottom: 5px;
+    border: 1px solid #FF6136;
+}
+
+input {
+    width: 300px;
+    height: 40px;
+    margin-left: 10px;
+    font-size: 24px;
+    border: 1px solid blue;
+}
+
+input:focus {
+    border: 3px solid red;
+}
+
+.submit {
+    width: 120px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0);
+    border: 0;
+    border-bottom: 3px solid #FF6136;
+    font-size: 16px;
+}
+
+.submit:hover {
+    border-bottom: 10px solid #FF6136;
+    cursor: pointer;
+    font-weight: bold;
+}
