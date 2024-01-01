@@ -269,7 +269,8 @@ a, a:hover{
         <div class="col-lg-12">
     <div class="table-responsive">
       <button class="btn btn-primary"><a href="add_teammate.php?number=<?php echo $_GET['number']; ?>">新增組員</a></button>
-      <button class="btn btn-primary"><a href="edit_project_name.php?id=<?php echo $_SESSION['id']; ?>">修改專題名稱</a></button>
+      <button class="btn btn-primary"><a href="edit_project_name.php?id=<?php echo $_SESSION['id']; ?>">修改個人專題名稱</a></button>
+      <button class="btn btn-primary"><a href="edit_group_name.php?number=<?php echo $_GET['number']; ?>">修改小組專題名稱</a></button>
       <table class="table table-hover">
         <script>
             function openUploadPopup() {
