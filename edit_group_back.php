@@ -1,7 +1,7 @@
 <?php
 
-// $link=mysqli_connect('localhost','root','12345678','test');
-$link = mysqli_connect('localhost', 'xiaoyao', 'xiaoyao', 'fwd');
+require_once 'conn.php';
+
 $sql = "select * from project where `number` = {$_POST['group']}";
 $result = mysqli_query($link, $sql);
 

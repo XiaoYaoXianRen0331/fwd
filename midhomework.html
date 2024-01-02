@@ -327,7 +327,7 @@
         .then((json) => {
           alert(json['message']);
           if(json['success']) {
-            window.location.href = 'midhomeworkteacher_group.php';
+            window.location.href = 'index.php';
           }
         })
     });
@@ -343,7 +343,7 @@
         .then((json) => {
           alert(json['message']);
           if(json['success']) {
-            window.location.href = 'student.php?number=' + json['group'];
+            window.location.href = 'index.php';
           }
         })
     });
@@ -359,7 +359,7 @@
         .then((json) => {
           alert(json['message']);
           if(json['success']) {
-            window.location.href = 'admin.php';
+            window.location.href = 'index.php';
           }
         })
     });

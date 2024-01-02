@@ -15,7 +15,7 @@
                 <input type="text" id="student_id">
             </div>
             <div class="item">
-                <button onclick="submit()">確認</button>
+                <button class="submit" onclick="submit()">確認</button>
             </div>
         </div>
     </div>

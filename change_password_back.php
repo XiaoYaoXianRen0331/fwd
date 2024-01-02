@@ -1,6 +1,6 @@
 <?php
-// $link=mysqli_connect('localhost','root', '','test');
-$link = mysqli_connect('localhost','xiaoyao','xiaoyao','fwd');
+require_once 'conn.php';
+
 $sql = "SELECT * FROM account WHERE `password` = '{$_POST['old']}' AND `id` = '{$_POST['id']}'";
 if($link->query($sql)->num_rows > 0){
 

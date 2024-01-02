@@ -21,8 +21,8 @@
         <?php }
 
         $newsid=$_GET['newsid'];
-        // $link=mysqli_connect('localhost','root', '','test');
-        $link = mysqli_connect('localhost','xiaoyao','xiaoyao','fwd');
+        require_once 'conn.php';
+
         $sql="select * from news where newsid='$newsid'";
         $result = mysqli_query($link,$sql);
         if($row=mysqli_fetch_assoc($result)){
@@ -53,7 +53,7 @@
                     <td><input type=date name="newsdate" value="<?php echo $newsdate; ?>"required></td>
                 </tr>
                 <tr>
-                    <td co;span=2><button type=submit>提交</button></td>
+                    <td><button type="submit" class="submit">提交</button></td>
                 </tr>
             </table>
         </form>

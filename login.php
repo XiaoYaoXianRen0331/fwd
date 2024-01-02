@@ -13,8 +13,8 @@ session_start();
 $id = $_POST['id'];
 $password = $_POST['password'];
 
-// $link=mysqli_connect('localhost','root', '','test');
-$link = mysqli_connect('localhost', 'xiaoyao', 'xiaoyao', 'fwd');
+require_once 'conn.php';
+
 $sql = "select distinct * from account where id='$id' and password='$password'";
 $result = $link->query($sql);
 if ($row = mysqli_fetch_assoc($result)) {

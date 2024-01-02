@@ -22,6 +22,10 @@ tr td:first-child {
     border-bottom: 1px solid #FF6136;
 }
 
+tr:last-child td {
+    border: 0;
+}
+
 input {
     width: 300px;
     height: 40px;
@@ -35,17 +39,18 @@ textarea {
     font-size: 16px;
 }
 
-button {
-    width: 120px;
+.submit {
+    width: 80px;
     height: 40px;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: #337AB7;
+    border-radius: 10px;
+    color: #fff;
     border: 0;
-    border-bottom: 3px solid #FF6136;
     font-size: 16px;
 }
 
-button:hover {
-    border-bottom: 10px solid #FF6136;
+.submit:hover {
+    background-color: #286090;
     cursor: pointer;
     font-weight: bold;
 }

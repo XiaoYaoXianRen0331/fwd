@@ -28,7 +28,7 @@
             </div>
             <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
             <div class="item">
-                <button type="button" id="button">送出</button>
+                <button type="button" id="button" class="submit">送出</button>
             </div>
         </form>
     </div>

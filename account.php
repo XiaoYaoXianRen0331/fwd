@@ -5,8 +5,8 @@ $id = $_POST['login'];
 $password = $_POST['pass'];
 $level = $_POST['level'];
 
-// $link=mysqli_connect('localhost','root', '','test');
-$link = mysqli_connect('localhost', 'xiaoyao', 'xiaoyao', 'fwd');
+require_once 'conn.php';
+
 $sql = "SELECT * FROM account WHERE `id` = '{$id}' AND `password` = '{$password}' AND `level` = '{$level}'";
 $result = $link->query($sql);
 if ($row = mysqli_fetch_assoc($result)) {

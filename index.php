@@ -1,6 +1,6 @@
 <?php
-    //  $link=mysqli_connect('localhost','root', '','test');
-    $link = mysqli_connect('localhost','xiaoyao','xiaoyao','fwd');
+    require_once 'conn.php';
+
 
     session_start();
     if(!(isset($_SESSION['name']))){
@@ -66,15 +66,15 @@
                 <div class="item">
                     <a href="logout.php">登出</a>
                 </div>
+                <div class="item">
+                    <a href="<?php echo $href; ?>">前往評分管理系統</a>
+                </div>
             <?php } else { ?>
                 <div class="item">
-                    <a href="login.htm">登入</a>
+                    <a href="<?php echo $href; ?>">登入</a>
                 </div>
             <?php }
             ?>
-            <div class="item">
-                <a href="<?php echo $href; ?>">前往評分管理系統</a>
-            </div>
         </div>
     </div>
         

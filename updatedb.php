@@ -13,8 +13,8 @@
         $content=$_POST['content'];
         $newsdate=$_POST['newsdate'];
 
-        // $link=mysqli_connect('localhost','root','12345678','test');
-        $link = mysqli_connect('localhost','xiaoyao','xiaoyao','fwd');
+        require_once 'conn.php';
+
         $sql="update news set newsdate='$newsdate', title='$title', content='$content' where newsid='$newsid'";
         echo $sql;
         if(mysqli_query($link,$sql)){

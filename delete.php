@@ -9,8 +9,8 @@
     <?php
         $newsid=$_GET['newsid'];
 
-        // $link=mysqli_connect('localhost','root','12345678','test');
-        $link = mysqli_connect('localhost','xiaoyao','xiaoyao','fwd');
+        require_once 'conn.php';
+
         $sql="delete from news where newsid='$newsid'";
         if(mysqli_query($link,$sql)){
             //echo "刪除成功";

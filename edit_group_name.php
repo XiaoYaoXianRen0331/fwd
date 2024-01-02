@@ -1,6 +1,6 @@
 <?php
-    // $link=mysqli_connect('localhost','root','12345678','test');
-    $link = mysqli_connect('localhost', 'xiaoyao', 'xiaoyao', 'fwd');
+    require_once 'conn.php';
+
     $sql = "select * from project where `number` = '{$_GET['number']}';";
     $result = mysqli_query($link, $sql);
     $row = mysqli_fetch_array($result);

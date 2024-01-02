@@ -1,6 +1,6 @@
 <?php
-// $link=mysqli_connect('localhost','root','12345678','test');
-$link = mysqli_connect('localhost', 'xiaoyao', 'xiaoyao', 'fwd');
+require_once 'conn.php';
+
 $sql = "SELECT * FROM account WHERE id = {$_POST['id']}";
 $result = mysqli_query($link, $sql);
 if($result->num_rows > 0){
